@@ -3,6 +3,7 @@ package com.stepanov.documentserver.controller;
 import com.stepanov.documentserver.model.Document;
 import com.stepanov.documentserver.service.DocumentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,13 +21,17 @@ public class DocumentController {
     }
 
     @GetMapping
-    public List<Document> getDocumentsList() {
-        return documentService.getDocumentsList();
+    public ResponseEntity<List<Document>> getDocumentsList() {
+        return ResponseEntity.ok(documentService.getDocumentsList());
     }
 
     @GetMapping("/{id}")
-    public Optional<Document> getDocumentById(@PathVariable("id") long id) {
-        return documentService.getDocumentById(id);
+    public ResponseEntity<Optional<Document>> getDocumentById(@PathVariable("id") long id) {
+        Optional<Document> documentOptional = documentService.getDocumentById(id);
+        if (!documentOptional.isPresent()){
+            ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(documentOptional);
     }
 
     @PostMapping("/save")

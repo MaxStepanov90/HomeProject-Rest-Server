@@ -31,8 +31,7 @@ public class DocumentServiceImpl implements DocumentService {
         document.setCreationDate(LocalDate.now());
         documentRepository.save(document);
     }
-    public void
-    deleteDocumentById(long id) {
+    public void deleteDocumentById(long id) {
         documentRepository.deleteById(id);
     }
 

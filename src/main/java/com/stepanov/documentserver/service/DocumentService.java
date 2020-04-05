@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface DocumentService {
 
-    public Optional<Document> getDocumentById(Long id);
-    public List<Document> getDocumentsList();
-    public void saveDocument(Document document);
+    Optional<Document> getDocumentById(Long id);
+    List<Document> getDocumentsList();
+    void saveDocument(Document document);
 }
