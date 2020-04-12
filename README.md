@@ -1,3 +1,5 @@
+Настройка https:
+
 1.Необходимо зайти от имени администратора и ввести в терминале keytool команду:
 
 keytool -genkeypair -alias ds -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore ds.p12 -validity 4000
@@ -17,5 +19,5 @@ keytool -export -keystore ds.p12 -alias ds -file dsCertificate.cer
 3.импортировать сертификат в ваше хранилище ключей
 
 Пароль: changeit;
-
+Путь к папкам указать свой.
 keytool -importcert -file dsCertificate.cer -keypass password -keystore "C:/Program Files/Java/jdk-13.0.2/lib/security/cacerts"
